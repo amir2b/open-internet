@@ -1,6 +1,6 @@
 #!make
 
-env:
+init:
 	@cp -n .env.example .env
 	@nano .env
 
