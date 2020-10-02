@@ -1,0 +1,38 @@
+version: '3.5'
+services:
+
+	shadowsocks:
+		image: shadowsocks/shadowsocks-libev
+		restart: always
+		environment:
+			PASSWORD: ${SHADOWSOCKS_PASSWORD}
+			METHOD: ${SHADOWSOCKS_METHOD}
+		logging:
+			options:
+				max-size: "1m"
+				max-file: "10"
+
+	kcptun:
+		build: kcptun/docker
+		restart: always
+		environment:
+			KCPTUN_KEY: ${KCPTUN_KEY}
+		ports:
+			- "${KCPTUN_PORT}:29900/udp"
+		ulimits:
+			nproc: 65535
+			nofile:
+				soft: 65535
+				hard: 65535
+		# sysctls:
+		#	net.core.rmem_max: 26214400
+		#	net.core.rmem_default: 26214400
+		#	net.core.wmem_max: 26214400
+		#	net.core.wmem_default: 26214400
+		#	net.core.netdev_max_backlog: 2048
+		depends_on:
+			- shadowsocks
+		logging:
+			options:
+				max-size: "1m"
+				max-file: "10"
