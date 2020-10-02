@@ -1,4 +1,4 @@
-# Shadowsocks with kcptun by docker
+# Shadowsocks server with kcptun by docker
 
 ## Setup
 update system packages:
@@ -33,20 +33,6 @@ make init
 make start
 ```
 
-## Shadowsocks environment:
-PASSWORD=xxxxxxxxxx  
-METHOD=aes-256-gcm  
-
-port=29900
-
-## Kcptun environment:
-MODE=fast3  
-SOCKBUF=16777217  
-DSCP=46  
-
-key=xxxxxxxxxx  
-nocomp
-
 ---
 ## Usefull commands
 
@@ -69,3 +55,17 @@ Restart containers:
 ```shell
 make restart
 ```
+
+# Client
+
+## Shadowsocks client config:
+password=xxxxxxxxxx  
+method=aes-256-gcm  
+port=8388 or 18388
+
+## Kcptun client config:
+key=xxxxxxxxxx  
+mode=fast3  
+sockbuf=16777217  
+dscp=46  
+nocomp
