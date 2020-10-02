@@ -16,7 +16,7 @@ Install other tools:
 sudo apt install -y git make
 ```
 
-Make project directory for project (Change `PROJECT_DIR`):
+Make project directory for project (change `PROJECT_DIR`):
 ```shell
 mkdir PROJECT_DIR
 cd PROJECT_DIR
@@ -30,7 +30,6 @@ git clone --single-branch --branch shadowsocks https://github.com/amir2b/open-in
 Init project:
 ```shell
 make init
-make build
 make start
 ```
 

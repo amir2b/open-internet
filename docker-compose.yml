@@ -13,7 +13,7 @@ services:
         max-file: "10"
 
   kcptun:
-    build: kcptun/docker
+    image: xtaci/kcptun
     restart: always
     environment:
       KCPTUN_KEY: ${KCPTUN_KEY}
@@ -30,6 +30,7 @@ services:
     #   net.core.wmem_max: 26214400
     #   net.core.wmem_default: 26214400
     #   net.core.netdev_max_backlog: 2048
+    command: ["server", "--target", "shadowsocks:8388", "--mode", "${KCPTUN_MODE:-fast3}", "--sockbuf", "${KCPTUN_SOCKBUF:-16777217}", "--dscp", "${KCPTUN_DSCP:-46}", "--nocomp"]
     depends_on:
       - shadowsocks
     logging:

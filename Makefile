@@ -4,9 +4,6 @@ init:
 	@cp -n .env.example .env
 	@nano .env
 
-build: .env
-	@docker-compose build --compress
-
 up: .env
 	@docker-compose up
 
