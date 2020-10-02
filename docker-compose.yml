@@ -7,6 +7,9 @@ services:
     environment:
       PASSWORD: ${SHADOWSOCKS_PASSWORD}
       METHOD: ${SHADOWSOCKS_METHOD}
+    ports:
+      - "${SHADOWSOCKS_PORT}:8388"
+      - "${SHADOWSOCKS_PORT}:8388/udp"
     logging:
       options:
         max-size: "1m"
